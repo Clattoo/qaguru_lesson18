@@ -18,7 +18,6 @@ public class ProfilePage {
     public ProfilePage deleteOneBook() {
         $("#delete-record-undefined").click();
         $("#closeSmallModal-ok").click();
-        sleep(3000);
         Selenide.refresh();
         return this;
     }
