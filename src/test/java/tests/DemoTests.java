@@ -2,8 +2,6 @@ package tests;
 
 import api.AccountApi;
 import api.BookStoreApi;
-import com.codeborne.selenide.logevents.SelenideLogger;
-import io.qameta.allure.selenide.AllureSelenide;
 import helpers.extensions.WithLogin;
 import models.GetBookListModel;
 import org.junit.jupiter.api.DisplayName;
@@ -11,10 +9,9 @@ import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import pages.ProfilePage;
 
-import static io.qameta.allure.Allure.step;
 import static org.assertj.core.api.Assertions.assertThat;
 
-@Tag("API")
+@Tag("demoqa_api")
 
 @DisplayName("Тесты книжного магазина Book Store на сайте demoqa.com")
 public class DemoTests extends TestBase {
@@ -27,18 +24,16 @@ public class DemoTests extends TestBase {
         BookStoreApi.addBookToList("9781449325862");
 
 
-            ProfilePage.openPage();
-            ProfilePage.deleteOneBook();
+        ProfilePage.openPage();
+        ProfilePage.deleteOneBook();
 
 
-
-            ProfilePage.openPage();
-            ProfilePage.checkDeleteBookWithUI();
-
+        ProfilePage.openPage();
+        ProfilePage.checkDeleteBookWithUI();
 
 
-            GetBookListModel response = AccountApi.getListOfBooks();
-            assertThat(response.getBooks()).isEmpty();
+        GetBookListModel response = AccountApi.getListOfBooks();
+        assertThat(response.getBooks()).isEmpty();
 
     }
 }
