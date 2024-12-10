@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import pages.ProfilePage;
 
+import static com.codeborne.selenide.Selenide.sleep;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @Tag("demoqa_api")
@@ -26,6 +27,7 @@ public class DemoTests extends TestBase {
 
         ProfilePage.openPage();
         ProfilePage.deleteOneBook();
+        sleep(3000);
 
         ProfilePage.openPage();
         ProfilePage.checkDeleteBookWithUI();
