@@ -28,6 +28,7 @@ public class DemoTests extends TestBase {
                 .addBookToList("9781449325862");
         profilePage.openPage()
                 .deleteOneBook()
+                .openPage()
                 .checkDeleteBookWithUI();
 
         GetBookListModel response = AccountApi.getListOfBooks();
