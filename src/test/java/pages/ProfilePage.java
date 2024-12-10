@@ -13,13 +13,13 @@ public class ProfilePage {
         open("/profile");
     }
 
-    @Step("Удаление одной книги из корзины пользователя")
+    @Step("Удаление одной книги из корзины пользователя через UI")
     public static void deleteOneBook() {
         $("#delete-record-undefined").click();
         $("#closeSmallModal-ok").click();
     }
 
-    @Step("Проверка успешности удаления книги из корзины")
+    @Step("Проверка успешности удаления книги из корзины через UI")
     public static void checkDeleteBookWithUI() {
         $("#see-book-Git Pocket Guide").shouldNotBe(visible);
     }

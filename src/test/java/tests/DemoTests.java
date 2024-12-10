@@ -22,32 +22,15 @@ public class DemoTests extends TestBase {
     @WithLogin
     @DisplayName("Проверка успешного удаления книги из списка")
     void successfulDeleteBookTest() {
-        SelenideLogger.addListener("allure", new AllureSelenide());
+        BookStoreApi.deleteAllBooksInCart();
+        BookStoreApi.addBookToList("9781449325862");
 
-        step("Удалить все книги из корзины", () ->
-                BookStoreApi.deleteAllBooksInCart());
+        ProfilePage.openPage();
+        ProfilePage.deleteOneBook();
+        ProfilePage.checkDeleteBookWithUI();
 
-        step("Добавить книгу в корзину", () ->
-                BookStoreApi.addBookToList("9781449325862"));
-
-        step("Удалить добавленную книгу", () -> {
-            ProfilePage.openPage();
-            ProfilePage.deleteOneBook();
-        });
-
-        step("Проверить удаление книги через UI", () -> {
-            ProfilePage.openPage();
-            ProfilePage.checkDeleteBookWithUI();
-        });
-
-        step("Получить список книг в корзине через API", () -> {
-            GetBookListModel response = AccountApi.getListOfBooks();
-            assertThat(response.getBooks()).isNotNull();
-        });
-
-        step("Проверить удаление книги через API", () -> {
-            GetBookListModel response = AccountApi.getListOfBooks();
-            assertThat(response.getBooks()).isEmpty();
-        });
+        GetBookListModel response = AccountApi.getListOfBooks();
+        assertThat(response.getBooks()).isNotNull();
+        assertThat(response.getBooks()).isEmpty();
     }
 }

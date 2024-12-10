@@ -10,7 +10,7 @@ import static specs.DemoQaSpec.*;
 
 public class BookStoreApi {
 
-    @Step("Удалить книги из корзины")
+    @Step("Удалить все книги из корзины с помощью API")
     public static void deleteAllBooksInCart() {
 
             given(createRequestSpec)
@@ -23,7 +23,7 @@ public class BookStoreApi {
 
     }
 
-    @Step("Добавить книгу в корзину")
+    @Step("Добавить книгу в корзину с помощью API")
     public static void addBookToList(String isbn) {
 
         IsbnModel isbnModel = new IsbnModel(isbn);
