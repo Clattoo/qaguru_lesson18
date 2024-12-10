@@ -11,7 +11,7 @@ import static specs.DemoQaSpec.*;
 public class BookStoreApi {
 
     @Step("Удалить все книги из корзины с помощью API")
-    public static void deleteAllBooksInCart() {
+    public BookStoreApi deleteAllBooksInCart() {
 
             given(createRequestSpec)
                     .header("Authorization", "Bearer " + cookies.getToken())
@@ -21,10 +21,11 @@ public class BookStoreApi {
                     .then()
                     .spec(deleteBook204Spec);
 
+            return this;
     }
 
     @Step("Добавить книгу в корзину с помощью API")
-    public static void addBookToList(String isbn) {
+    public BookStoreApi addBookToList(String isbn) {
 
         IsbnModel isbnModel = new IsbnModel(isbn);
         AddBookListRequestModel request = new AddBookListRequestModel(cookies.getUserId(), List.of(isbnModel));
@@ -36,6 +37,8 @@ public class BookStoreApi {
                     .post("/BookStore/v1/Books")
                     .then()
                     .spec(successfulResponse201Spec);
+
+            return this;
 
     }
 }
