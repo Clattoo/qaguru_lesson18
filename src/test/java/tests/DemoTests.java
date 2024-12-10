@@ -27,6 +27,8 @@ public class DemoTests extends TestBase {
 
         ProfilePage.openPage();
         ProfilePage.deleteOneBook();
+
+        ProfilePage.openPage();
         ProfilePage.checkDeleteBookWithUI();
 
         GetBookListModel response = AccountApi.getListOfBooks();
