@@ -4,8 +4,7 @@ import com.codeborne.selenide.Selenide;
 import io.qameta.allure.Step;
 
 import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 
 public class ProfilePage {
 
@@ -19,6 +18,7 @@ public class ProfilePage {
     public ProfilePage deleteOneBook() {
         $("#delete-record-undefined").click();
         $("#closeSmallModal-ok").click();
+        sleep(3000);
         Selenide.refresh();
         return this;
     }

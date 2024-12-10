@@ -23,8 +23,12 @@ public class DemoTests extends TestBase {
     @WithLogin
     @DisplayName("Проверка успешного удаления книги из списка")
     void successfulDeleteBookTest() {
-        bookStoreApi.deleteAllBooksInCart().addBookToList("9781449325862");
-        profilePage.openPage().deleteOneBook().checkDeleteBookWithUI();
+
+        bookStoreApi.deleteAllBooksInCart()
+                .addBookToList("9781449325862");
+        profilePage.openPage()
+                .deleteOneBook()
+                .checkDeleteBookWithUI();
 
         GetBookListModel response = AccountApi.getListOfBooks();
         assertThat(response.getBooks()).isEmpty();
