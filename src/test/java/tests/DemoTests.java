@@ -23,14 +23,9 @@ public class DemoTests extends TestBase {
         BookStoreApi.deleteAllBooksInCart();
         BookStoreApi.addBookToList("9781449325862");
 
-
         ProfilePage.openPage();
         ProfilePage.deleteOneBook();
-
-
-        ProfilePage.openPage();
         ProfilePage.checkDeleteBookWithUI();
-
 
         GetBookListModel response = AccountApi.getListOfBooks();
         assertThat(response.getBooks()).isEmpty();
