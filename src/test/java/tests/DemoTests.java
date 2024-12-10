@@ -14,7 +14,7 @@ import pages.ProfilePage;
 import static io.qameta.allure.Allure.step;
 import static org.assertj.core.api.Assertions.assertThat;
 
-@Tag("demoqa_api")
+@Tag("API")
 
 @DisplayName("Тесты книжного магазина Book Store на сайте demoqa.com")
 public class DemoTests extends TestBase {
@@ -22,17 +22,28 @@ public class DemoTests extends TestBase {
     @WithLogin
     @DisplayName("Проверка успешного удаления книги из списка")
     void successfulDeleteBookTest() {
+
         BookStoreApi.deleteAllBooksInCart();
         BookStoreApi.addBookToList("9781449325862");
 
-        ProfilePage.openPage();
-        ProfilePage.deleteOneBook();
 
-        ProfilePage.openPage();
-        ProfilePage.checkDeleteBookWithUI();
+            ProfilePage.openPage();
+            ProfilePage.deleteOneBook();
 
-        GetBookListModel response = AccountApi.getListOfBooks();
-        assertThat(response.getBooks()).isNotNull();
-        assertThat(response.getBooks()).isEmpty();
+
+
+            ProfilePage.openPage();
+            ProfilePage.checkDeleteBookWithUI();
+
+
+
+            GetBookListModel response = AccountApi.getListOfBooks();
+            assertThat(response.getBooks()).isNotNull();
+
+
+
+            GetBookListModel response = AccountApi.getListOfBooks();
+            assertThat(response.getBooks()).isEmpty();
+
     }
 }
