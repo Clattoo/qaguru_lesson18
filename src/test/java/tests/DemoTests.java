@@ -38,7 +38,6 @@ public class DemoTests extends TestBase {
 
 
             GetBookListModel response = AccountApi.getListOfBooks();
-            assertThat(response.getBooks()).isNotNull();
             assertThat(response.getBooks()).isEmpty();
 
     }
