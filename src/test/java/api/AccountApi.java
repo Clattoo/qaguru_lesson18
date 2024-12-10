@@ -4,6 +4,7 @@ import io.qameta.allure.Step;
 import models.GetBookListModel;
 import models.LoginResponseModel;
 import models.LoginUserModel;
+
 import static helpers.extensions.LoginExtension.cookies;
 import static io.restassured.RestAssured.given;
 import static specs.DemoQaSpec.*;
